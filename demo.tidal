@@ -1,0 +1,22 @@
+-- setcps 1 = bpm 120
+setcps 1
+-- bpm 100
+setcps (100/120)
+
+
+d1 $ chop 16 $ s "bass1"
+
+d2 $ chop 8 $ s "[bd bd] hh bd [hh hh]"
+
+d2 silence
+
+d1 $ sound "bev - bev -" # legato 1
+
+
+d1 $ striate 32 $ sound "bev"
+
+d1 $ chop 32 $ sound "bev"
+
+hush
+
+d1 $ sound "909"
