@@ -1,14 +1,99 @@
 -- setcps 1 = bpm 120
 setcps 1
--- bpm 100
-setcps (100/120)
+-- bpm 95
+setcps (95/60/4)
+
+-- pattern1
+d1 $ every 2 (density 2) (s "bass1*2")
+d2 $ s "bd:14*4" # speed "0.5"
+d3 $ every 3 (fast 2) (s "hh*10")
+d4 $ s "[~ speech]*3" # speed "0.9"
+
+d1 $ up (run 12) # s "hh"
+d1 $ s "bd(2,5)"
+
+-- run amen breaks
+setcps (120/60/16)
+--d1 $ s "amencutup"
+d1 $ n (run 32) # s "amencutup"
+--d1 $ s "amencutup" # n (run 32)
+d1 silence
+
+-- breaks125
+setcps (128/60/4)
+d1 $ s "breaks125"
+
+-- breaks152
+setcps (152/60/4)
+d1 $ s "breaks152"
+-- half
+setcps (76/60/4)
+d1 $ s "breaks152" # speed "0.5"
+
+-- breaks157
+setcps (157/60/4)
+d1 $ s "breaks157"
+-- half
+setcps (78.5/60/4)
+d1 $ s "breaks157" # speed "0.5"
 
 
+-- breaks165
+setcps (165/60/4)
+d1 $ s "breaks165"
+-- half
+setcps (84/60/4)
+d1 $ s "breaks165" # speed "0.5"
+
+-- check sapmles
+setcps (120/60/32)
+d1 $ n (run 32) # s "808oh"
+d1 $ n (run 32) # s "909"
+d1 $ n (run 32) # s "ades3"
+d1 $ n (run 32) # s "fm"
+
+setcps 1
+d1 $ s "fm:16" # cut 2
+hush
+
+d1 silence
+
+
+-- baseline
 d1 $ chop 16 $ s "bass1"
+d1 $ s "bass1"
+d1 $ every 2 (density 2) (s "bass1*2")
+d1 $ s "bass1" # n (range 0 10 sine)
+d1 silence
+d2 silence >> d3 silence
 
-d2 $ chop 8 $ s "[bd bd] hh bd [hh hh]"
 
+-- bass drum
+d2 $ s "bd:12*4" # speed "0.5"
+d2 $ s "808bd:5*4"
+d2 $ every 2 (density 3) (s "bd hh ~ hh")
+d2 $ rev(s "[bd hh ~ ~] [hh bd ~ hh]")
+d2 $ s "bd hh ~ sn bd hh ~ hh" # speed "0.5"
+d2 $ s "[bd bd] [hh bd] [bd hh] [bd bd]"
 d2 silence
+
+-- snare
+d3 $ s "[~ sn:11]*4"
+d3 $ s "[~ 808sd:9]*4"
+d3 silence
+
+d4 $ s "hh*12"
+d4 silence
+
+d5 $ s "[~ speech]*3"
+
+d3 $ s "bd" |+| n "2 3" |+| n "4 5 6"
+
+d3 $ s "bd*2 [~ sn:3]"
+d3 $ s "bd*2"
+d3 $ s "bd*2 [~ sn] bd hh"
+d3 $ s "bd*2 [[~ hh] sn:3] hh [hh bd:2*2]"
+d3 $  every 2 (0.25 <~) $ sound "bd*2 [[~ lt] sn:3] lt:1 [ht mt*2]"
 
 d1 $ sound "bev - bev -" # legato 1
 
@@ -17,6 +102,12 @@ d1 $ striate 32 $ sound "bev"
 
 d1 $ chop 32 $ sound "bev"
 
-hush
 
 d1 $ sound "909"
+
+
+-- boombap sample
+-- via https://www.youtube.com/watch?v=ff7iMNcMnnY
+
+
+hush
